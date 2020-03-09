@@ -4,5 +4,8 @@
 	service = "api@internal"
 	middlewares = ["traefik-dashboard-auth"]
 
+	[http.routers.traefik-dashboard.tls]
+	    certResolver = "letsencrypt"
+
 [http.middlewares.traefik-dashboard-auth.basicAuth]
 	usersFile = "/etc/traefik/confs/traefik-dashboard.htpasswd"

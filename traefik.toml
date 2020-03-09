@@ -19,7 +19,7 @@
 
 [log]
 	# https://docs.traefik.io/observability/logs/#level
-	level = "DEBUG"
+	#level = "DEBUG"
 
 
 # https://docs.traefik.io/observability/access-logs/#configuration
@@ -33,10 +33,10 @@
 
   storage = "/letsencrypt/acme.json"
 
-  # CA server to use.
-  caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+  # uncomment to use the stagging letsenctrypt server.
+  #caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 
-  # keyType = "RSA4096"
+  #keyType = "RSA4096"
 
   # Use a TLS-ALPN-01 ACME challenge.
   [certificatesResolvers.letsencrypt.acme.tlsChallenge]

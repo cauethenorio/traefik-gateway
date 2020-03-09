@@ -7,7 +7,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
     volumes:
       - "./letsencrypt:/letsencrypt"
       - "./traefik.toml:/etc/traefik/traefik.toml"
@@ -15,6 +14,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
       - TRAEFIK_DASHBOARD_DOMAIN
+    restart: always
 
 networks:
   default:

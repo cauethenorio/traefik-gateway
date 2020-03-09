@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  traefik:
+    image: "traefik:v2.1"
+    container_name: "traefik-gateway"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "./traefik.toml:/etc/traefik/traefik.toml"
+      - "./confs:/etc/traefik/confs"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    environment:
+      - TRAEFIK_DASHBOARD_DOMAIN
+
+networks:
+  default:
+    external:
+      name: gateway

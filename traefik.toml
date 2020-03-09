@@ -1,0 +1,42 @@
+[entryPoints]
+	[entryPoints.http]
+		address = ":80"
+	[entryPoints.https]
+		address = ":443"
+
+
+[providers]
+	[providers.file]
+		directory = "/etc/traefik/confs"
+
+	[providers.docker]
+		watch = true
+		endpoint = "unix:///var/run/docker.sock"
+		exposedByDefault = false
+
+[api]
+	dashboard = true
+
+[log]
+	# https://docs.traefik.io/observability/logs/#level
+	level = "DEBUG"
+
+
+# https://docs.traefik.io/observability/access-logs/#configuration
+# [accessLog]
+
+# Enable ACME (Let's Encrypt): automatic SSL.
+[certificatesResolvers.letsencrypt.acme]
+
+  # Email address used for registration.
+  email = "caue@thenorio.com.br"
+
+  storage = "/letsencrypt/acme.json"
+
+  # CA server to use.
+  caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+
+  # keyType = "RSA4096"
+
+  # Use a TLS-ALPN-01 ACME challenge.
+  [certificatesResolvers.letsencrypt.acme.tlsChallenge]

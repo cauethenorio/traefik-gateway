@@ -1,0 +1,8 @@
+[http.routers.traefik-dashboard]
+	entryPoints = ["http", "https"]
+	rule = "Host(`{{ env "TRAEFIK_DASHBOARD_DOMAIN" }}`)"
+	service = "api@internal"
+	middlewares = ["traefik-dashboard-auth"]
+
+[http.middlewares.traefik-dashboard-auth.basicAuth]
+	usersFile = "/etc/traefik/confs/traefik-dashboard.htpasswd"

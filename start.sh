@@ -4,4 +4,4 @@
 # - verify if gateway docker networks exists:
 #   docker network create gateway
 
-#
+#https://containo.us/blog/traefik-2-tls-101-23b4fbee81f1/
